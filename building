@@ -1,3 +1,5 @@
-kubectl create configmap fluentd-config --namespace=kube-system --from-file=fluentd/fluent.conf
-kubectl create configmap fluentd-config --namespace=kube-system --from-file=fluentd/fluent.conf -o yaml --dry-run | kubectl apply -f -
+creste the ConfigMap
+kubectl create configmap fluent-bit-config --namespace=kube-system --from-file=fluent-bit.conf
+Update the ConfigMap
+kubectl create configmap fluent-bit-config --namespace=kube-system --from-file=fluent-bit.conf -o yaml --dry-run | kubectl apply -f -
 kubectl patch deployment fluentd-daemonset -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
