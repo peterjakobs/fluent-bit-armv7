@@ -23,6 +23,11 @@ spec:
       - name: fluent-bit
         image: peterjakobs/fluent-bit-armv7:latest
         imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "50Mi"
+          requests:
+            memory: "40Mi"
         ports:
           - containerPort: 2020
         volumeMounts:

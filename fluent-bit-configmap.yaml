@@ -41,7 +41,7 @@ data:
     [OUTPUT]
         Name            forward
         Match           *
-        Host            10.36.0.1
+        Host            fluentd.default.svc.cluster.local
         Port            24224
         Logstash_Format On
         Retry_Limit     False
