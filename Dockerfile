@@ -3,8 +3,8 @@ FROM resin/armv7hf-debian:stretch as builder
 # Fluent Bit version
 ENV FLB_MAJOR 0
 ENV FLB_MINOR 14
-ENV FLB_PATCH 2
-ENV FLB_VERSION 0.14.2
+ENV FLB_PATCH 4
+ENV FLB_VERSION 0.14.4
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -31,10 +31,10 @@ RUN apt-get update \
           -DFLB_JEMALLOC=On \
           -DFLB_BUFFERING=On \
           -DFLB_TLS=On \
-          -DFLB_WITHOUT_SHARED_LIB=On \
-          -DFLB_WITHOUT_EXAMPLES=On \
+          -DFLB_SHARED_LIB=Off \
+          -DFLB_EXAMPLES=Off \
           -DFLB_HTTP_SERVER=On \
-          -DFLB_OUT_ES=Off \
+          -DFLB_OUT_ES=On \
           -DFLB_OUT_TD=Off \
           -DFLB_OUT_KAFKA=Off .. \
     && make \
@@ -51,7 +51,6 @@ COPY fluent-bit.conf \
 
 FROM resin/armv7hf-debian:stretch
 MAINTAINER Peter Jakobs <peterjakobs67@gmail.com>
-LABEL Description="Fluent Bit docker image for armv7"
 
 RUN apt-get update \
 #    && apt-get dist-upgrade -y \
