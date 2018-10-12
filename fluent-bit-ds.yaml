@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit
-        image: peterjakobs/fluent-bit-armv7:latest
+        image: peterjakobs/fluent-bit-armhf-es:latest
         imagePullPolicy: Always
         resources:
           limits:
