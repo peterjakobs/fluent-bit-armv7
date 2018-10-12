@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: fluent-bit
-  namespace: kube-system
+  namespace: logging
   labels:
     k8s-app: fluent-bit-logging
     version: v1
@@ -49,7 +49,7 @@ spec:
       - name: fluent-bit-config
         configMap:
           name: fluent-bit-config
-#      serviceAccountName: fluent-bit
+      serviceAccountName: fluent-bit
       tolerations:
       - key: node-role.kubernetes.io/master
         operator: Exists
